@@ -34,3 +34,21 @@ li {
   max-width: 600px;
   margin: 30px auto;
 }
+.overview {
+  margin-bottom: 20px;
+}
+.weather-temperature img {
+  margin-right: 10px;
+  height: 64px;
+  width: 64px;
+}
+#temperature {
+  font-size: 64px;
+  font-weight: 400;
+  line-height: 1;
+}
+.units {
+  position: relative;
+  font-size: 16px;
+  top: -34px;
+}
