@@ -25,7 +25,6 @@ function formatDate(timestamp) {
 }
 
 function displayTemperature(response) {
-  console.log(response.data);
   let temperatureElement = document.querySelector("#temperature");
   temperatureElement.innerHTML = Math.round(response.data.main.temp);
   ////
@@ -51,8 +50,17 @@ function displayTemperature(response) {
   );
 }
 
-let apiKey = "46d856ad81bf24c97ff95fd0280e6d42";
-let city = "Miami";
-let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+function handleSubmit(event) {
+  event.preventDefault();
+  let cityInputElement = document.querySelector("#city-input");
+  search(cityInputElement.value);
+}
+function search(city) {
+  let apiKey = "46d856ad81bf24c97ff95fd0280e6d42";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayTemperature);
+}
 
-axios.get(apiUrl).then(displayTemperature);
+let form = document.querySelector("#search-form");
+form.addEventListener("submit", handleSubmit);
+search("Lisbon");
